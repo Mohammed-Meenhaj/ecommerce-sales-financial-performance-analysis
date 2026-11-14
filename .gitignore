@@ -1,0 +1,11 @@
+# Power BI Desktop caches and machine-specific settings
+**/.pbi/
+*.abf
+*.pbix
+PowerBI_Backup_*/
+# Local configuration and temporary Office files
+.env
+.env.*
+~$*
+Thumbs.db
+.DS_Store
