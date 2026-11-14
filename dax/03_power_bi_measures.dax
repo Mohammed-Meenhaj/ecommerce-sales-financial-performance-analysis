@@ -1,0 +1,17 @@
+// Installed measures from the Power BI model. Add individually only when rebuilding.
+// Display formats are defined in the semantic model.
+
+// Format: "BDT "#,0
+Total Revenue = SUM('ecommerce_analytics ecommerce_sales_clean'[completed_sales_bdt])
+
+// Format: "BDT "#,0
+Total COGS = SUM('ecommerce_analytics ecommerce_sales_clean'[completed_cogs_bdt])
+
+// Format: "BDT "#,0
+Gross Profit = SUM('ecommerce_analytics ecommerce_sales_clean'[completed_profit_bdt])
+
+// Format: 0.00%
+Profit Margin % = DIVIDE([Gross Profit], [Total Revenue], 0)
+
+// Format: #,0
+Total Orders = COUNTROWS('ecommerce_analytics ecommerce_sales_clean')

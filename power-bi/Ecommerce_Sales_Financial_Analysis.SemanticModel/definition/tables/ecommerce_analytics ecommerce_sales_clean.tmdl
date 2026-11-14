@@ -1,0 +1,188 @@
+table 'ecommerce_analytics ecommerce_sales_clean'
+	lineageTag: 1422f32d-fa1e-41f1-8d0b-1dd0916e39db
+
+	measure 'Total Revenue' = SUM('ecommerce_analytics ecommerce_sales_clean'[completed_sales_bdt])
+		formatString: "BDT "#,0
+		lineageTag: 3275eb00-9b52-47ee-8c9e-ddf1430c856c
+
+	measure 'Total COGS' = SUM('ecommerce_analytics ecommerce_sales_clean'[completed_cogs_bdt])
+		formatString: "BDT "#,0
+		lineageTag: 23ca89ed-7d9e-4739-840c-ab31dc47575b
+
+	measure 'Gross Profit' = SUM('ecommerce_analytics ecommerce_sales_clean'[completed_profit_bdt])
+		formatString: "BDT "#,0
+		lineageTag: 618b72ec-60c9-4a1b-8742-24853069541c
+
+	measure 'Profit Margin %' = DIVIDE([Gross Profit], [Total Revenue], 0)
+		formatString: 0.00%
+		lineageTag: d2015f81-65e8-4883-9013-6b54bda913ac
+
+	measure 'Total Orders' = COUNTROWS('ecommerce_analytics ecommerce_sales_clean')
+		formatString: #,0
+		lineageTag: f3f16489-cfdb-4c84-948a-33ade3ba6e64
+
+	column order_id
+		dataType: string
+		lineageTag: 00f717df-dcf2-425c-8a69-6b25cc83436b
+		summarizeBy: none
+		sourceColumn: order_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column order_date
+		dataType: string
+		lineageTag: 87694a4a-7657-4e64-bbef-4f5a8356cf10
+		summarizeBy: none
+		sourceColumn: order_date
+
+		annotation SummarizationSetBy = Automatic
+
+	column product_id
+		dataType: string
+		lineageTag: 4998850c-fb31-484e-87ff-48d535e91c18
+		summarizeBy: none
+		sourceColumn: product_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column product
+		dataType: string
+		lineageTag: b5c95d30-ba2a-4885-932f-6964307240a5
+		summarizeBy: none
+		sourceColumn: product
+
+		annotation SummarizationSetBy = Automatic
+
+	column category
+		dataType: string
+		lineageTag: 8999e1b6-8c48-4dfa-b194-2e2c2d1a0df2
+		summarizeBy: none
+		sourceColumn: category
+
+		annotation SummarizationSetBy = Automatic
+
+	column region
+		dataType: string
+		lineageTag: 49c5d058-8b04-467b-b4eb-5009d5612153
+		summarizeBy: none
+		sourceColumn: region
+
+		annotation SummarizationSetBy = Automatic
+
+	column channel
+		dataType: string
+		lineageTag: 89f61965-9d23-4550-99b8-16a00cf81f49
+		summarizeBy: none
+		sourceColumn: channel
+
+		annotation SummarizationSetBy = Automatic
+
+	column quantity
+		dataType: int64
+		formatString: 0
+		lineageTag: 64a28593-03dd-4fac-b1dc-d6e4cdd30005
+		summarizeBy: sum
+		sourceColumn: quantity
+
+		annotation SummarizationSetBy = Automatic
+
+	column unit_price_bdt
+		dataType: int64
+		formatString: 0
+		lineageTag: 498bc305-f1d1-4d72-8385-7992c05bb399
+		summarizeBy: sum
+		sourceColumn: unit_price_bdt
+
+		annotation SummarizationSetBy = Automatic
+
+	column unit_cost_bdt
+		dataType: int64
+		formatString: 0
+		lineageTag: 73444078-1dcf-414e-9ed1-6e7571e1b731
+		summarizeBy: sum
+		sourceColumn: unit_cost_bdt
+
+		annotation SummarizationSetBy = Automatic
+
+	column status
+		dataType: string
+		lineageTag: c6785330-8a97-4902-8bf8-63fe2d9fea7a
+		summarizeBy: none
+		sourceColumn: status
+
+		annotation SummarizationSetBy = Automatic
+
+	column order_month
+		dataType: string
+		lineageTag: 2ce297f9-7368-440f-94fc-4b48eed6302c
+		summarizeBy: none
+		sourceColumn: order_month
+
+		annotation SummarizationSetBy = Automatic
+
+	column gross_sales_bdt
+		dataType: int64
+		formatString: 0
+		lineageTag: 2715d2af-b698-4365-bae9-7d96e1640671
+		summarizeBy: sum
+		sourceColumn: gross_sales_bdt
+
+		annotation SummarizationSetBy = Automatic
+
+	column cogs_bdt
+		dataType: int64
+		formatString: 0
+		lineageTag: 751b9d7f-a35e-4a6d-81fd-cbe61a1ba864
+		summarizeBy: sum
+		sourceColumn: cogs_bdt
+
+		annotation SummarizationSetBy = Automatic
+
+	column gross_profit_bdt
+		dataType: int64
+		formatString: 0
+		lineageTag: 3ce76ebc-b053-45b7-8d90-f92fab649ebd
+		summarizeBy: sum
+		sourceColumn: gross_profit_bdt
+
+		annotation SummarizationSetBy = Automatic
+
+	column completed_sales_bdt
+		dataType: int64
+		formatString: 0
+		lineageTag: b5a9a7a1-f2d1-4ec5-8eb8-248b56d72ec5
+		summarizeBy: sum
+		sourceColumn: completed_sales_bdt
+
+		annotation SummarizationSetBy = Automatic
+
+	column completed_cogs_bdt
+		dataType: int64
+		formatString: 0
+		lineageTag: a1197d8e-f245-4ec7-89d1-6b45bd80e35c
+		summarizeBy: sum
+		sourceColumn: completed_cogs_bdt
+
+		annotation SummarizationSetBy = Automatic
+
+	column completed_profit_bdt
+		dataType: int64
+		formatString: 0
+		lineageTag: 1e22190a-96ac-4bab-8a8e-330fac5886ce
+		summarizeBy: sum
+		sourceColumn: completed_profit_bdt
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'ecommerce_analytics ecommerce_sales_clean' = m
+		mode: import
+		source =
+				let
+				    Source = MySQL.Database("localhost:3306", "ecommerce_portfolio", [ReturnSingleDatabase=true]),
+				    ecommerce_analytics_ecommerce_sales_clean = Source{[Schema="ecommerce_portfolio",Item="sales"]}[Data]
+				in
+				    ecommerce_analytics_ecommerce_sales_clean
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
